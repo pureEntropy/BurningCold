@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "burningcold",
+  "version": "${version}",
+
+  "name": "Burning Cold",
+  "description": "Modded client for Minecraft 1.19.2",
+  "authors": [
+    "lowEntropy"
+  ],
+  "contact": {
+    "homepage": "https://pureentropy.xyz/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.pureentropy.burningcold.BurningCold"
+    ]
+  },
+  "mixins": [
+    "burningcold.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
