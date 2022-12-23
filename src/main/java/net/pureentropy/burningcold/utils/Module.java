@@ -11,12 +11,11 @@ public class Module implements ModuleInterface
 	private boolean enabled;
 	private int color;
 	
-	public Module(String n, Category c, int k, int co)
-	{
-		name = n;
+	public Module(String modName, Category c, int keybind, int HUDColor) {
+		name = modName;
 		category = c;
-		key = k;
-		color = co;
+		key = keybind;
+		color = HUDColor;
 	}
 
 	@Override
@@ -56,15 +55,12 @@ public class Module implements ModuleInterface
 	}
 
 	@Override
-	public void setToggle(boolean b)
-	{
+	public void setToggle(boolean b) {
 		onToggle();
 		enabled = b;
-		if (b)
-		{
+		if (b) {
 			onEnable();
-		} else
-		{
+		} else {
 			onDisable();
 		}
 	}
@@ -76,32 +72,27 @@ public class Module implements ModuleInterface
 	}
 
 	@Override
-	public void onToggle()
-	{
+	public void onToggle() {
 		//empty for now
 	}
 
 	@Override
-	public void onEnable()
-	{
+	public void onEnable() {
 		//empty for now
 	}
 
 	@Override
-	public void onDisable()
-	{
+	public void onDisable() {
 		//empty for now
 	}
 
 	@Override
-	public void onUpdate()
-	{
+	public void onUpdate() {
 		//empty for now
 	}
 
 	@Override
-	public void onRender()
-	{
+	public void onRender() {
 		//empty for now
 	}
 }

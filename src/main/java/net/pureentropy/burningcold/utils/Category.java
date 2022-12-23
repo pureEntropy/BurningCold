@@ -1,6 +1,5 @@
 package net.pureentropy.burningcold.utils;
 
-public enum Category
-{
-	COMBAT, MOVEMENT, RENDER, PLAYER, WORLD, EXPLIOT
+public enum Category {
+	COMBAT, EXPLIOT, MOVEMENT, PATCH, PLAYER, RENDER, WORLD
 }

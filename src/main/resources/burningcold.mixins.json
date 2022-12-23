@@ -7,9 +7,9 @@
   ],
   "client": [
     "ExampleMixin",
-    "utils.hud",
-    "PacketLogger",
-    "DemoModeFix",
+    "utils.renderMixin",
+    "utils.PacketLogger",
+    "GameStateChangePatcher",
     "RoundFullMovement",
     "RoundOnGroundMovement",
     "WorldBorderPatch"

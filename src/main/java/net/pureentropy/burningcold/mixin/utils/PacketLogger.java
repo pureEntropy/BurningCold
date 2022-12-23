@@ -1,8 +1,11 @@
-package net.pureentropy.burningcold.mixin;
+package net.pureentropy.burningcold.mixin.utils;
 
 import io.netty.channel.ChannelHandlerContext;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.Packet;
+import net.pureentropy.burningcold.utils.Category;
+import net.pureentropy.burningcold.utils.Module;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.At;

@@ -1,7 +1,10 @@
 package net.pureentropy.burningcold.utils;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
+import net.pureentropy.burningcold.mixin.GameStateChangePatcher;
+import net.pureentropy.burningcold.mixin.RoundFullMovement;
 
 import java.util.ArrayList;
 /* import burningcold.BurningCold;
@@ -18,71 +21,84 @@ import burningcold.mods.WaterWalking;
 import burningcold.mods.Xray;
 import burningcold.utils.XrayUtils; */
 
-public class ModuleManager
-{
+public class ModuleManager {
+
+    public ModuleManager() {
+        register();
+    }
     private static ArrayList<Module> mods;
 
-    public Module getModsByClass(Class <? extends Module> c)
-    {
-        for (Module m: mods)
-        {
-            if (m.getClass().equals(c))
+    public Module getModsByClass(Class <? extends Module> c) {
+        for (Module m: mods) {
+            if (m.getClass().equals(c)) {
                 return m;
+            }
         }
         return null;
     }
 
-    /* public static void register()
-    {
-        XrayUtils.addDefaultBlocks();
+    public static void register() {
+
+        //XrayUtils.addDefaultBlocks();
         mods = new ArrayList();
 
-        addModule(new Flight());     //0
-        addModule(new FullBright()); //1
-        addModule(new KillAura());   //2
-        addModule(new StorageESP()); //3
-        addModule(new Tracers());    //4
-        addModule(new Freecam());    //5
-        addModule(new Xray());       //6
-        addModule(new AutoWalk());   //7
-        addModule(new NoSlowDown());
+        //Adding Mixins to mod list for management
+        Module GameStateChangePatcher = new Module("Game State Listener", Category.PATCH, InputUtil.GLFW_KEY_LEFT_ALT, 00);
+        Module RoundFullMovement = new Module("Full Anti-Human Patch", Category.PATCH, InputUtil.GLFW_KEY_LEFT_ALT, 00);
+        Module RoundOnGroundMovement = new Module("On Ground Anti-Human Patch", Category.PATCH, InputUtil.GLFW_KEY_LEFT_ALT, 00);
+        Module WorldBorderPatch = new Module("World Border Patch", Category.PATCH, InputUtil.GLFW_KEY_LEFT_ALT, 00);
 
-        addModule(new WaterWalking());
+        addModule(GameStateChangePatcher);  //0
+        addModule(RoundFullMovement);       //1
+        addModule(RoundOnGroundMovement);   //2
+        addModule(WorldBorderPatch);        //3
 
-        mods.get(3).toggleModule(); //Toggle StorageESP
-        mods.get(4).toggleModule(); //Toggle Tracers
-    } */
+        //addModule(new Flight());
+        //addModule(new FullBright());
+        //addModule(new KillAura());
+        //addModule(new StorageESP());
+        //addModule(new Tracers());
+        //addModule(new Freecam());
+        //addModule(new Xray());
+        //addModule(new AutoWalk());
+        //addModule(new NoSlowDown());
 
-    public static ArrayList<Module> getMods()
-    {
+        //addModule(new WaterWalking());
+
+        //mods.get(3).toggleModule(); //Toggle StorageESP by default
+        //mods.get(4).toggleModule(); //Toggle Tracers by default
+
+        mods.get(0).toggleModule(); //Toggle Game State Listener by default
+        mods.get(1).toggleModule(); //Full Anti-Human Patch by default
+        mods.get(2).toggleModule(); //On Ground Anti-Human Patch by default
+        mods.get(3).toggleModule(); //World Border Patch by default
+    }
+
+    public static ArrayList<Module> getMods() {
         return mods;
     }
 
-    public static void addModule(Module m)
-    {
+    private static void addModule(Module m) {
         mods.add(m);
     }
 
-    public static void onKeypressed(int k)
-    {
-        for (Module m: mods)
-        {
-            if (k == m.getKeybind())
+    public static void onKeypressed(int k) {
+        for (Module m: mods) {
+            if (k == m.getKeybind()) {
                 m.toggleModule();
+            }
         }
     }
 
-    public static void onUpdate()
-    {
-        for (Module m: mods)
+    public static void onUpdate() {
+        for (Module m: mods) {
             m.onUpdate();
+        }
     }
 
-    public static void onRender()
-    {
-        //MinecraftClient.getInstance().textRenderer.draw(new MatrixStack(), "test", 20, 30, 0xffffffff);
-
-        //for (Module m: mods)
-        //    m.onRender();
+    public static void onRender() {
+        for (Module m: mods) {
+            m.onRender();
+        }
     }
 }
