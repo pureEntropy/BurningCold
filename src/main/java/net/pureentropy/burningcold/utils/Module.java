@@ -1,6 +1,8 @@
 package net.pureentropy.burningcold.utils;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 
 public class Module implements ModuleInterface
 {
@@ -93,6 +95,11 @@ public class Module implements ModuleInterface
 
 	@Override
 	public void onRender() {
+		//empty for now
+	}
+
+	@Override
+	public void onAttack(PlayerEntity player, Entity target) {
 		//empty for now
 	}
 }

@@ -12,7 +12,12 @@
     "GameStateChangePatcher",
     "RoundFullMovement",
     "RoundOnGroundMovement",
-    "WorldBorderPatch"
+    "WorldBorderPatch",
+    "hooks.BlockRendererHook",
+    "hooks.EntityTickHook",
+    "hooks.OnAttackHook",
+    "hooks.onKeyPress",
+    "hooks.OpaqueBlockHook"
   ],
   "injectors": {
     "defaultRequire": 1

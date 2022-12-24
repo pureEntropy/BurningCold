@@ -2,24 +2,10 @@ package net.pureentropy.burningcold.utils;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.math.MatrixStack;
-import net.pureentropy.burningcold.mixin.GameStateChangePatcher;
-import net.pureentropy.burningcold.mixin.RoundFullMovement;
-
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.pureentropy.burningcold.mods.AutoWalk;
 import java.util.ArrayList;
-/* import burningcold.BurningCold;
-import burningcold.gui.InGameGui;
-import burningcold.mods.AutoWalk;
-import burningcold.mods.Flight;
-import burningcold.mods.Freecam;
-import burningcold.mods.FullBright;
-import burningcold.mods.KillAura;
-import burningcold.mods.NoSlowDown;
-import burningcold.mods.StorageESP;
-import burningcold.mods.Tracers;
-import burningcold.mods.WaterWalking;
-import burningcold.mods.Xray;
-import burningcold.utils.XrayUtils; */
 
 public class ModuleManager {
 
@@ -40,7 +26,7 @@ public class ModuleManager {
     public static void register() {
 
         //XrayUtils.addDefaultBlocks();
-        mods = new ArrayList();
+        mods = new ArrayList<>();
 
         //Adding Mixins to mod list for management
         Module GameStateChangePatcher = new Module("Game State Listener", Category.PATCH, InputUtil.GLFW_KEY_LEFT_ALT, 00);
@@ -60,7 +46,7 @@ public class ModuleManager {
         //addModule(new Tracers());
         //addModule(new Freecam());
         //addModule(new Xray());
-        //addModule(new AutoWalk());
+        addModule(new AutoWalk());
         //addModule(new NoSlowDown());
 
         //addModule(new WaterWalking());
@@ -100,5 +86,23 @@ public class ModuleManager {
         for (Module m: mods) {
             m.onRender();
         }
+    }
+
+    public static void onAttack(PlayerEntity player, Entity target) {
+        for (Module m: mods) {
+            //m.onAttack(player, target);
+        }
+    }
+
+    public static boolean isModuleEnabled(String modName) {
+        boolean e = false;
+
+        for (Module m: mods) {
+            if (m.getName() == modName) {
+                e = m.isEnabled();
+            }
+        }
+
+        return e;
     }
 }
