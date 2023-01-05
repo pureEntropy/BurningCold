@@ -1,4 +1,4 @@
-package net.pureentropy.burningcold;
+package net.pureentropy.burningcold.mods;
 
 import net.minecraft.client.util.InputUtil;
 import net.pureentropy.burningcold.BurningCold;

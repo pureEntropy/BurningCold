@@ -17,7 +17,8 @@
     "hooks.EntityTickHook",
     "hooks.OnAttackHook",
     "hooks.onKeyPress",
-    "hooks.OpaqueBlockHook"
+    "hooks.OpaqueBlockHook",
+    "MiniMapMixin"
   ],
   "injectors": {
     "defaultRequire": 1

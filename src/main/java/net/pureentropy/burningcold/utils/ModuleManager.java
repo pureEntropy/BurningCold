@@ -5,6 +5,8 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.pureentropy.burningcold.mods.AutoWalk;
+import net.pureentropy.burningcold.mods.MiniMap;
+
 import java.util.ArrayList;
 
 public class ModuleManager {
@@ -47,6 +49,7 @@ public class ModuleManager {
         //addModule(new Freecam());
         //addModule(new Xray());
         addModule(new AutoWalk());
+        addModule(new MiniMap());
         //addModule(new NoSlowDown());
 
         //addModule(new WaterWalking());
